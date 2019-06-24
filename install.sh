@@ -17,9 +17,7 @@ python_path_default="/usr/bin/python3.6"
 read -p "Enter python3.6.*path (defaults to $python_path_default ) Leave blank to use default:" python_path
 if [[ $python_path = "" ]]
 then
-    $python_path="$python_path_default"
-else
-    $python_path="/usr/bin/python3.6"
+    python_path=$python_path_default
 fi
 echo "Using path: $python_path"
 echo "Setting up the virtual environment..."
