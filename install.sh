@@ -1,5 +1,5 @@
 #!/bin/bash
-read "This project requires python3.5.+ or python3.6.+. The script will find your python3 versions now..."
+echo "This project requires python3.5.+ or python3.6.+. The script will find your python3 versions now..."
 find / -type f -executable -iname 'python3*' -exec file -i '{}' \; | awk -F: '/x-executable; charset=binary/ {print $1}' | xargs readlink -f | sort -u | xargs -I % sh -c 'echo -n "%: "; % -V'
 read -p "Do you wish to install python3.6.8? Enter y|Y if so, or n|N if you already have it instaled:" install_python
 if [[ $install_python = "y" ||  $install_python = "Y" ]]
@@ -17,9 +17,7 @@ python_path_default="/usr/bin/python3.6"
 read -p "Enter python3.6.*path (defaults to $python_path_default ) Leave blank to use default:" python_path
 if [[ $python_path = "" ]]
 then
-    $python_path="$python_path_default"
-else
-    $python_path="/usr/bin/python3.6"
+    python_path=$python_path_default
 fi
 echo "Using path: $python_path"
 echo "Setting up the virtual environment..."
