@@ -1,0 +1,14 @@
+.vscode
+__pycache__
+setup.cfg
+venv
+build
+*.mp3
+venv
+downloads
+dist/
+ui.glade~
+.mypy_cache
+test-urls.txt
+errors.txt
+*.pyc
