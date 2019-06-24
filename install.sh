@@ -1,5 +1,5 @@
 #!/bin/bash
-read "This project requires python3.5.+ or python3.6.+. The script will find your python3 versions now..."
+echo "This project requires python3.5.+ or python3.6.+. The script will find your python3 versions now..."
 find / -type f -executable -iname 'python3*' -exec file -i '{}' \; | awk -F: '/x-executable; charset=binary/ {print $1}' | xargs readlink -f | sort -u | xargs -I % sh -c 'echo -n "%: "; % -V'
 read -p "Do you wish to install python3.6.8? Enter y|Y if so, or n|N if you already have it instaled:" install_python
 if [[ $install_python = "y" ||  $install_python = "Y" ]]
