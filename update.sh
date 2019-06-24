@@ -1,7 +1,7 @@
 #!/bin/bash
 # Pull the repo and hard merge
 git fetch --all
-git reset --hard origin/dev
+git reset --hard origin/master
 
 # Update python dependencies
 source venv/bin/activate

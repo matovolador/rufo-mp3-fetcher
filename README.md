@@ -14,7 +14,7 @@ The installation starts by fetching the repo with git.
 So the command would be:
 
 ```bash
-git clone https://github.com/bossnode/rufo-mp3-fetcher.git && cd rufo-mp3-fetcher && git fetch && git checkout dev && chmod +x ./install.sh && chmod +x ./run.sh && chmod +x ./install-extras.sh && chmod +x ./update.sh
+git clone https://github.com/bossnode/rufo-mp3-fetcher.git && cd rufo-mp3-fetcher && git fetch && git checkout master && chmod +x ./install.sh && chmod +x ./run.sh && chmod +x ./install-extras.sh && chmod +x ./update.sh
 ```
 
 ### What it does
