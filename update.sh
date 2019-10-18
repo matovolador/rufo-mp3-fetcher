@@ -13,4 +13,4 @@ pip install -U youtube-dl
 pip freeze > requirements.txt
 deactivate
 # reset the damn flags back to +x on these (retrieving the repo seems to clean them out)
-chmod +x ./update.sh && chmod +x ./run.sh && chmod +x ./install.sh && chmod +x ./install-extrash.sh
+chmod +x ./update.sh && chmod +x ./run.sh && chmod +x ./install.sh && chmod +x ./install-extras.sh
