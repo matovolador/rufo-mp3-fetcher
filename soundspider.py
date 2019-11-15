@@ -2,6 +2,10 @@ from __future__ import unicode_literals
 import youtube_dl
 import sys,os
 from datetime import datetime
+from pydub import effects, AudioSegment
+import glob
+
+
 class SoundSpider():
 
     @staticmethod
@@ -40,7 +44,7 @@ class SoundSpider():
         try:
             with youtube_dl.YoutubeDL(options) as ydl:
                 ydl.download([url])
-                
+
             if normalize:
                 # get files again since they have new names:
                 files = glob.glob("./downloads/"+sub_path+"*.mp3")
