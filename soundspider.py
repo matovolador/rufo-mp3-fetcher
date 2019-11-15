@@ -11,7 +11,7 @@ class SoundSpider():
                 f.write('')
                 f.close()
 
-        sub_path = ''  # folder name. optional. this goes inside downoads/
+        sub_path = ''  # folder name. optional. this goes inside downloads/
         if extra_path:
             sub_path = extra_path.replace("/","").replace('"',"").replace("'","")+"/"
         download_path = os.path.join(os.path.dirname(__file__),"downloads/"+sub_path)
