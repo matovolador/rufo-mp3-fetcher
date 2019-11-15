@@ -12,3 +12,4 @@ ui.glade~
 test-urls.txt
 errors.txt
 *.pyc
+test.py
