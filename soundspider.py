@@ -38,6 +38,16 @@ class SoundSpider():
             with youtube_dl.YoutubeDL(options) as ydl:
                 ydl.download([url])
                 
+            if normalize:
+                # get files again since they have new names:
+                files = glob.glob("./downloads/"+sub_path+"*.mp3")
+                print("Normalizing audio...")
+                for f in files:
+                    _sound = AudioSegment.from_file(f, "mp3")  
+                    sound = effects.normalize(_sound)  
+                    sound.export(f, format="mp3")
+            print("Done")
+
             # do this crap while i implement a callback to Threading (cant be arsed to be honest)
             label_object.set_text("Done!")
             button_object.set_sensitive(True)
