@@ -33,6 +33,8 @@ class SoundSpider():
                 'preferredcodec': 'mp3',
                 'preferredquality': '0'
             }],
+            "minsleepinterval":"5",
+            "maxsleepinterval": "10"
         }
         try:
             with youtube_dl.YoutubeDL(options) as ydl:
