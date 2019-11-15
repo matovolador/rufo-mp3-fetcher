@@ -23,7 +23,7 @@ class Handler:
 		## verbose?
 		verbose = True
 		# verbose = False
-		params = (builder.get_object("url_label").get_text(),builder.get_object("folder_label").get_text(),verbose, builder.get_object('label4'), button,builder.get_object("url_label"),builder.get_object("folder_label"))
+		params = (builder.get_object("url_label").get_text(),builder.get_object("folder_label").get_text(),verbose, builder.get_object('label4'), button,builder.get_object("url_label"),builder.get_object("folder_label"),True)
 		download_thread = threading.Thread(target=SoundSpider.convert, args=params)
 		download_thread.start()
 		return
