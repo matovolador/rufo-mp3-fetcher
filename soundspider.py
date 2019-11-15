@@ -5,7 +5,7 @@ from datetime import datetime
 class SoundSpider():
 
     @staticmethod
-    def convert(url,extra_path,verbose, label_object, button_object,url_label,folder_label):
+    def convert(url,extra_path,verbose, label_object, button_object,url_label,folder_label, normalize):
         # Clean errors.txt
         with open('errors.txt','w') as f:
                 f.write('')
