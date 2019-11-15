@@ -23,7 +23,7 @@ class SoundSpider():
             'audioformat':'mp3',
             "audioquality":"0",
             'ignoreerrors':True,
-            'outtmpl': 'downloads/'+sub_path+u'%(title)s.%(ext)s',     #name the file the ID of the video
+            'outtmpl': 'downloads/'+sub_path+u'%(playlist_index)s - %(title)s.%(ext)s',     #name the file the ID of the video
             'noplaylist':False,
             'verbose': verbose,
             'nocheckcertificate':True,
