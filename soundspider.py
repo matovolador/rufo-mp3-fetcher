@@ -4,12 +4,14 @@ import sys,os
 from datetime import datetime
 from pydub import effects, AudioSegment
 import glob
-
+import tkinter as tk
 
 class SoundSpider():
 
     @staticmethod
-    def convert(url,extra_path,verbose, label_object, button_object,url_label,folder_label, normalize):
+    def convert(url_entry,extra_path_entry,verbose, label_object, button_object,url_label,folder_label, normalize):
+        url = url_entry.get()
+        extra_path = extra_path_entry.get()
         # Clean errors.txt
         with open('errors.txt','w') as f:
                 f.write('')
@@ -46,6 +48,7 @@ class SoundSpider():
                 ydl.download([url])
 
             if normalize:
+                label_object["text"]="Normalizing audio. Please wait..."
                 # get files again since they have new names:
                 files = glob.glob("./downloads/"+sub_path+"*.mp3")
                 print("Normalizing audio...")
@@ -56,12 +59,14 @@ class SoundSpider():
             print("Done")
 
             # do this crap while i implement a callback to Threading (cant be arsed to be honest)
-            label_object.set_text("Done!")
-            button_object.set_sensitive(True)
-            folder_label.set_sensitive(True)
-            url_label.set_sensitive(True)
-            folder_label.set_text('')
-            url_label.set_text('')
+            label_object["text"]="Done!"
+            button_object['state']="normal"
+            folder_label['state'] = "normal"
+            url_label['state'] = "normal"
+            url_entry.delete(0, tk.END)
+            url_entry.insert(0, "")
+            extra_path_entry.delete(0,tk.END)
+            extra_path_entry.insert(0,"")
             return True
         except Exception as e:
             with open('errors.txt','w') as f:
@@ -69,10 +74,12 @@ class SoundSpider():
                 f.close()
 
             # do this crap while i implement a callback to Threading (cant be arsed to be honest)
-            label_object.set_text("Error downloading file(s).\nPlease check errors.txt file for more information.")
-            button_object.set_sensitive(True)
-            folder_label.set_sensitive(True)
-            url_label.set_sensitive(True)
-            folder_label.set_text('')
-            url_label.set_text('')
+            label_object['text']="Error downloading file(s).\nPlease check errors.txt file for more information."
+            button_object["state"] = "normal"
+            folder_label['state'] = "normal"
+            url_label['state'] = "normal"
+            url_entry.delete(0, tk.END)
+            url_entry.insert(0, "")
+            extra_path_entry.delete(0,tk.END)
+            extra_path_entry.insert(0,"")
             return False
