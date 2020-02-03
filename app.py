@@ -11,6 +11,13 @@ class Application(tk.Frame):
 		self.pack()
 		self.create_widgets()
 
+	def destroy(self):
+			try:
+				download_thread.quit()
+			except:
+				pass
+			self.destroy()
+
 	def create_widgets(self):
 		self.label_title = tk.Label(self,text="Download Youtube Urls to MP3.\nYou can also download playlists!")
 		self.label_title.pack(side="top")
