@@ -1,53 +1,50 @@
-import gi
-gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk
 import os, sys
 from soundspider import SoundSpider
 from time import sleep
 import threading
+import tkinter as tk
 
-class Handler:
-	def onDestroy(self, *args):
-		try:
-			download_thread._stop()
-		except:
-			pass
-		Gtk.main_quit()
+class Application(tk.Frame):
+	def __init__(self, master=None):
+		super().__init__(master)
+		self.master = master
+		self.pack()
+		self.create_widgets()
 
-	def onToggleDownload(self, button):
+	def create_widgets(self):
+		self.label_title = tk.Label(self,text="Download Youtube Urls to MP3.\nYou can also download playlists!")
+		self.label_title.pack(side="top")
+		self.downloadBtn = tk.Button(self,text="Download",command=self.onToggleDownload)
+		self.downloadBtn.pack(side="bottom")
+		self.url_label = tk.Label(self,text="Enter Youtube URL:")
+		self.url_label.pack(side="top")
+		self.url_entry = tk.Entry(self)
+		self.url_entry.pack(side="top")
+		self.dir_label = tk.Label(self,text="Enter download subfolder:")
+		self.dir_label.pack(side="top")
+		self.dir_entry = tk.Entry(self)
+		self.dir_entry.pack(side="top")
+		self.status_label = tk.Label(self,text="")
+		self.status_label.pack(side="bottom")
+
+
+	def onToggleDownload(self):
 		status = "Downloading..."
-		builder.get_object('label4').set_text(status)
-		button.set_sensitive(False)
-		builder.get_object("folder_label").set_sensitive(False)
-		builder.get_object("url_label").set_sensitive(False)
+		self.status_label['text'] = status
+		self.downloadBtn['state'] = "disabled"
+		self.dir_entry['state'] = "disabled"
+		self.url_entry['state'] = "disabled"
 		## verbose?
 		verbose = True
 		# verbose = False
-		params = (builder.get_object("url_label").get_text(),builder.get_object("folder_label").get_text(),verbose, builder.get_object('label4'), button,builder.get_object("url_label"),builder.get_object("folder_label"),True)
+		params = (self.url_entry.get(),self.dir_entry.get(),verbose, self.status_label, self.downloadBtn,self.url_entry,self.dir_entry,True)
 		download_thread = threading.Thread(target=SoundSpider.convert, args=params)
 		download_thread.start()
 		return
 
-def resource_path(relative_path):
-    """ Get absolute path to resource, works for dev and for PyInstaller """
-    try:
-        # PyInstaller creates a temp folder and stores path in _MEIPASS
-        base_path = sys._MEIPASS
-    except Exception:
-        base_path = os.path.abspath(".")
-
-    return os.path.join(base_path, relative_path)
-	# """ Get absolute path to resource, works for dev and for PyInstaller """
-	# base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
-	# return os.path.join(base_path, relative_path)
-
-download_thread = threading.Thread()
-
-builder = Gtk.Builder()
-builder.add_from_file(resource_path("ui.glade"))
-builder.connect_signals(Handler())
-
-window = builder.get_object("window1")
-window.show_all()
-
-Gtk.main()
+root = tk.Tk()
+app = Application(master=root)
+app.master.title("RUFO MP3 FETCHER")
+app.master.maxsize(400, 200)
+app.master.geometry("400x200")
+app.mainloop()
