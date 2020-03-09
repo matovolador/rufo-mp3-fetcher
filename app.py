@@ -4,6 +4,8 @@ from time import sleep
 import threading
 import tkinter as tk
 
+the_menu = False
+
 class Application(tk.Frame):
 	def __init__(self, master=None):
 		super().__init__(master)
@@ -34,6 +36,8 @@ class Application(tk.Frame):
 		self.status_label = tk.Label(self,text="")
 		self.status_label.pack(side="bottom")
 
+		self.url_entry.bind_class("Entry", "<Button-3><ButtonRelease-3>", self.show_menu)
+		self.dir_entry.bind_class("Entry", "<Button-3><ButtonRelease-3>", self.show_menu)
 
 	def onToggleDownload(self):
 		status = "Downloading..."
@@ -49,8 +53,26 @@ class Application(tk.Frame):
 		download_thread.start()
 		return
 
+	def make_menu(self,w):
+		global the_menu
+		the_menu = tk.Menu(w, tearoff=0)
+		the_menu.add_command(label="Cut")
+		the_menu.add_command(label="Copy")
+		the_menu.add_command(label="Paste")
+
+	def show_menu(self,e):
+		w = e.widget
+		the_menu.entryconfigure("Cut",
+		command=lambda: w.event_generate("<<Cut>>"))
+		the_menu.entryconfigure("Copy",
+		command=lambda: w.event_generate("<<Copy>>"))
+		the_menu.entryconfigure("Paste",
+		command=lambda: w.event_generate("<<Paste>>"))
+		the_menu.tk.call("tk_popup", the_menu, e.x_root, e.y_root)
+
 root = tk.Tk()
 app = Application(master=root)
+app.make_menu(root)
 app.master.title("RUFO MP3 FETCHER")
 app.master.maxsize(400, 200)
 app.master.geometry("400x200")
