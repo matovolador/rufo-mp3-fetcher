@@ -56,5 +56,5 @@ MIT
 
 ## If you want to donate
 
-[PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JMDSAAPB6WSSY&source=url)
+BTC bc1qnuek2ax2e8a6tnvyzj8tqltgkfevya6twzncr2
 

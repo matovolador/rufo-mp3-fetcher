@@ -11,6 +11,13 @@ class Application(tk.Frame):
 		self.pack()
 		self.create_widgets()
 
+	def destroy(self):
+			try:
+				download_thread.quit()
+			except:
+				pass
+			self.destroy()
+
 	def create_widgets(self):
 		self.label_title = tk.Label(self,text="Download Youtube Urls to MP3.\nYou can also download playlists!")
 		self.label_title.pack(side="top")
@@ -35,9 +42,8 @@ class Application(tk.Frame):
 		self.dir_entry['state'] = "disabled"
 		self.url_entry['state'] = "disabled"
 		## verbose?
-		# verbose = True
 		verbose = False
-		params = (self.url_entry.get(),self.dir_entry.get(),verbose, self.status_label, self.downloadBtn,self.url_entry,self.dir_entry,True)
+		params = (self.url_entry,self.dir_entry,verbose, self.status_label, self.downloadBtn,self.url_entry,self.dir_entry,True)
 		download_thread = threading.Thread(target=SoundSpider.convert, args=params)
 		download_thread.start()
 		return

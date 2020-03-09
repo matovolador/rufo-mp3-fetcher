@@ -4,12 +4,14 @@ import sys,os
 from datetime import datetime
 from pydub import effects, AudioSegment
 import glob
-
+import tkinter as tk
 
 class SoundSpider():
 
     @staticmethod
-    def convert(url,extra_path,verbose, label_object, button_object,url_label,folder_label, normalize):
+    def convert(url_entry,extra_path_entry,verbose, label_object, button_object,url_label,folder_label, normalize):
+        url = url_entry.get()
+        extra_path = extra_path_entry.get()
         # Clean errors.txt
         with open('errors.txt','w') as f:
                 f.write('')
@@ -61,8 +63,10 @@ class SoundSpider():
             button_object['state']="normal"
             folder_label['state'] = "normal"
             url_label['state'] = "normal"
-            folder_label.set("")
-            url_label.set("")
+            url_entry.delete(0, tk.END)
+            url_entry.insert(0, "")
+            extra_path_entry.delete(0,tk.END)
+            extra_path_entry.insert(0,"")
             return True
         except Exception as e:
             with open('errors.txt','w') as f:
@@ -74,6 +78,8 @@ class SoundSpider():
             button_object["state"] = "normal"
             folder_label['state'] = "normal"
             url_label['state'] = "normal"
-            folder_label.set("")
-            url_label.set("")
+            url_entry.delete(0, tk.END)
+            url_entry.insert(0, "")
+            extra_path_entry.delete(0,tk.END)
+            extra_path_entry.insert(0,"")
             return False
