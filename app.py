@@ -48,7 +48,7 @@ class Application(tk.Frame):
 		## verbose?
 		# verbose = True
 		verbose = False
-		params = (self.url_entry.get(),self.dir_entry.get(),verbose, self.status_label, self.downloadBtn,self.url_entry,self.dir_entry,True)
+		params = (self.url_entry,self.dir_entry,verbose, self.status_label, self.downloadBtn,self.url_entry,self.dir_entry,True)
 		download_thread = threading.Thread(target=SoundSpider.convert, args=params)
 		download_thread.start()
 		return
