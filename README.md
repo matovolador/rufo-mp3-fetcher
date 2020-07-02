@@ -2,7 +2,7 @@
 
 ## About
 
-This software is a python wrapper for ffmpeg. It uses tkinter UI.
+This software is a python wrapper for ffmpeg and youtube_dl. It uses tkinter UI.
 
 ## Requirements
 
@@ -17,6 +17,13 @@ Create virtual env:
 virtualenv venv --python=/usr/bin/python3.6
 source venv/bin/activate
 pip install -r requirements.txt
+```
+youtube-dl package is inside requirements.txt
+
+If your software encounters an error when downloading a file, try updating this module
+```bin
+source venv/bin/activate
+pip install -U youtube-dl
 ```
 
 ## Execution
