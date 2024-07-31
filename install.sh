@@ -1,6 +1,38 @@
 #!/bin/bash
-echo "This project requires python3.5.+ or python3.6.+. The script will find your python3 versions now..."
-find / -type f -executable -iname 'python3*' -exec file -i '{}' \; | awk -F: '/x-executable; charset=binary/ {print $1}' | xargs readlink -f | sort -u | xargs -I % sh -c 'echo -n "%: "; % -V'
+#!/bin/bash
+
+echo "This project requires Python 3.5+ or Python 3.6+. The script will find your Python 3 installations now..."
+
+# Define the directories to search. Adjust as needed.
+SEARCH_DIRS=(
+    "/usr/bin"
+    "/usr/local/bin"
+    "/bin"
+    "$HOME/.local/bin"
+)
+
+# Function to find and print Python installations
+find_python_installations() {
+    local dir
+    local python_path
+
+    for dir in "${SEARCH_DIRS[@]}"; do
+        if [[ -d $dir ]]; then
+            echo "Searching in $dir"
+            find "$dir" -type f -executable -iname 'python3*' 2>/dev/null | while read -r python; do
+                python_path=$(readlink -f "$python")
+                version_output=$("$python_path" --version 2>&1)
+                if [[ $? -eq 0 ]]; then
+                    echo "$python_path: $version_output"
+                else
+                    echo "$python_path: Unable to determine version"
+                fi
+            done
+        fi
+    done
+}
+
+find_python_installations
 read -p "Do you wish to install python3.6.8? Enter y|Y if so, or n|N if you already have it instaled:" install_python
 if [[ $install_python = "y" ||  $install_python = "Y" ]]
 then
