@@ -12,35 +12,21 @@ Virtualenv
 
 ## Installation
 
-Create virtual env:
-```bin
-virtualenv venv --python=/usr/bin/python3.6
-source venv/bin/activate
-pip install -r requirements.txt
+```bash
+sudo ./install-extras.sh
 ```
-youtube-dl package is inside requirements.txt
 
-If your software encounters an error when downloading a file, try updating this module
-```bin
-source venv/bin/activate
-pip install -U youtube-dl
+```bash
+sudo ./install.sh
 ```
 
 ## Execution
 
-If your virtualenv is "venv":
-
-```bin
-source venv/bin/activate
-python app.py
+```bash
+./run.sh
 ```
-
-
-## Licence
-
-MIT
 
 ## If you want to donate
 
-BTC bc1qnuek2ax2e8a6tnvyzj8tqltgkfevya6twzncr2
+[Paypal.me](https://paypal.me/matiasgarafoni?country.x=UY&locale.x=es_XC)
 
