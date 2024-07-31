@@ -8,7 +8,7 @@ source venv/bin/activate
 pip install -U pip
 pip install -r requirements.txt
 # Intentionally upgrade youtube-dl module as its the 'hottest one in town'
-pip install -U youtube-dl
+pip install --upgrade yt-dlp pydub
 # If you get newer version...
 pip freeze > requirements.txt
 deactivate
