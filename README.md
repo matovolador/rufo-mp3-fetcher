@@ -26,6 +26,12 @@ sudo ./install.sh
 ./run.sh
 ```
 
+## Updating
+
+```bash
+sudo ./update.sh
+```
+
 ## If you want to donate
 
 [Paypal.me](https://paypal.me/matiasgarafoni?country.x=UY&locale.x=es_XC)
