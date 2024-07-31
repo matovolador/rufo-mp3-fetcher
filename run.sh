@@ -1,3 +1,2 @@
-#!/bin/bash
-source venv/bin/activate
-python app.py
+docker build -t rufo-mp3-fetcher .
+docker run -p rufo-mp3-fetcher
