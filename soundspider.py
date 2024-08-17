@@ -1,4 +1,3 @@
-from __future__ import unicode_literals
 import yt_dlp as youtube_dl
 import os
 import traceback
