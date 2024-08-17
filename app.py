@@ -39,19 +39,9 @@ class Application(tk.Frame):
 		self.url_entry.bind_class("Entry", "<Button-3><ButtonRelease-3>", self.show_menu)
 		self.dir_entry.bind_class("Entry", "<Button-3><ButtonRelease-3>", self.show_menu)
 
-	def onToggleDownload(self):
-		status = "Downloading..."
-		self.status_label['text'] = status
-		self.downloadBtn['state'] = "disabled"
-		self.dir_entry['state'] = "disabled"
-		self.url_entry['state'] = "disabled"
-		## verbose?
-		# verbose = True
-		verbose = False
-		params = (self.url_entry,self.dir_entry,verbose, self.status_label, self.downloadBtn,self.url_entry,self.dir_entry,True)
-		download_thread = threading.Thread(target=SoundSpider.convert, args=params)
-		download_thread.start()
-		return
+        self.download_thread = threading.Thread(
+            target=SoundSpider.convert, args=params)
+        self.download_thread.start()
 
 	def make_menu(self,w):
 		global the_menu
