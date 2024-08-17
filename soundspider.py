@@ -27,6 +27,13 @@ class SoundSpider():
         if not os.path.exists(download_path):
             os.makedirs(download_path)
 
+        # Progress hook to update the label
+        def progress_hook(d):
+            if d['status'] == 'downloading':
+                label_object['text'] = f"Downloading: {d['_percent_str']} - {d['_eta_str']} remaining"
+            elif d['status'] == 'finished':
+                label_object['text'] = "Download finished, processing..."
+
         options = {
             'format': 'bestaudio/best',
             'extractaudio': True,
@@ -46,7 +53,8 @@ class SoundSpider():
                 'preferredquality': '0'
             }],
             "minsleepinterval": "5",
-            "maxsleepinterval": "10"
+            "maxsleepinterval": "10",
+            'progress_hooks': [progress_hook],  # Add the progress hook here
         }
 
         try:
