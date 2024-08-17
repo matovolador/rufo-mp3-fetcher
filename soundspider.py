@@ -81,8 +81,8 @@ class SoundSpider():
             button_object['state'] = "normal"
             folder_label['state'] = "normal"
             url_label['state'] = "normal"
-            url_entry.delete(0, tk.END)
-            extra_path_entry.delete(0, tk.END)
+            # url_entry.delete(0, tk.END)
+            # extra_path_entry.delete(0, tk.END)
             return True
         except Exception as e:
             with open('errors.txt', 'w') as f:
@@ -94,6 +94,6 @@ class SoundSpider():
             button_object["state"] = "normal"
             folder_label['state'] = "normal"
             url_label['state'] = "normal"
-            url_entry.delete(0, tk.END)
-            extra_path_entry.delete(0, tk.END)
+            # url_entry.delete(0, tk.END)
+            # extra_path_entry.delete(0, tk.END)
             return False
