@@ -27,12 +27,12 @@ class Application(tk.Frame):
         self.download_thread = None
         self.create_widgets()
 
-    def destroy(self):
+    def custom_destroy(self):
         try:
-            self.download_thread.quit()
+            self.download_thread.quit()  # This might cause issues if not properly defined
         except:
             pass
-        self.destroy()
+        self.master.destroy()  # Properly destroy the Tkinter window
 
     def create_widgets(self):
         self.label_title = tk.Label(
@@ -97,4 +97,8 @@ app.make_menu(root)
 app.master.title("RUFO MP3 FETCHER")
 app.master.maxsize(800, 200)
 app.master.geometry("800x200")
+
+# Bind the custom destroy method to the window close button
+app.master.protocol("WM_DELETE_WINDOW", app.custom_destroy)
+
 app.mainloop()
