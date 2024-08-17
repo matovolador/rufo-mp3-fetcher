@@ -2,9 +2,21 @@ import os, sys
 from soundspider import SoundSpider
 from time import sleep
 import threading
+import signal
+import sys
 import tkinter as tk
 
+
+def signal_handler(sig, frame):
+    print('Exiting application...')
+    sys.exit(0)
+
+
+signal.signal(signal.SIGINT, signal_handler)
+signal.signal(signal.SIGTERM, signal_handler)
+
 the_menu = False
+
 
 class Application(tk.Frame):
 	def __init__(self, master=None):
