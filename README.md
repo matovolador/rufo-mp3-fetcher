@@ -26,6 +26,12 @@ sudo ./install.sh
 ./run.sh
 ```
 
+### Running as terminal command script
+
+```bash
+python command.py "your-desired-url" --normalize --verbose
+```
+
 ## Updating
 
 ```bash
