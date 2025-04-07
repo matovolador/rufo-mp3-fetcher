@@ -23,13 +23,8 @@ sudo ./install.sh
 ## Execution
 
 ```bash
-./run.sh
-```
-
-### Running as terminal command script
-
-```bash
-python command.py "your-desired-url" --normalize --verbose
+source venv/bin/activate
+python main.py "your-desired-url" --normalize --verbose
 ```
 
 ## Updating

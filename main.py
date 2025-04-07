@@ -60,11 +60,14 @@ class SoundSpider():
                 print(f"Normalizing {len(files)} audio files...")
 
                 for idx, f in enumerate(files):
-                    print(f"Normalizing file {idx+1}/{len(files)}: {f}")
-                    _sound = AudioSegment.from_file(f, "mp3")
-                    sound = effects.normalize(_sound)
-                    sound.export(f, format="mp3")
-                    print(f"Finished normalizing file {idx+1}/{len(files)}: {f}")
+                    try:
+                        print(f"Normalizing file {idx+1}/{len(files)}: {f}")
+                        _sound = AudioSegment.from_file(f, "mp3")
+                        sound = effects.normalize(_sound)
+                        sound.export(f, format="mp3")
+                        print(f"Finished normalizing file {idx+1}/{len(files)}: {f}")
+                    except Exception as e:
+                        print(f"Error normalizing file: {e}")
 
             print("All done!")
             return True
