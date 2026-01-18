@@ -7,8 +7,7 @@ This software is a python wrapper for ffmpeg and youtube_dl.
 ## Requirements
 
 You will need [ffmpeg](https://ffmpeg.org/) in your system PATH.
-Python 3.6.x
-Virtualenv
+Python 3.11.x
 
 ## Execution
 
