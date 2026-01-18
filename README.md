@@ -2,7 +2,7 @@
 
 ## About
 
-This software is a python wrapper for ffmpeg and youtube_dl. It uses tkinter UI.
+This software is a python wrapper for ffmpeg and youtube_dl.
 
 ## Requirements
 
@@ -10,27 +10,11 @@ You will need [ffmpeg](https://ffmpeg.org/) in your system PATH.
 Python 3.6.x
 Virtualenv
 
-## Installation
-
-```bash
-sudo ./install-extras.sh
-```
-
-```bash
-sudo ./install.sh
-```
-
 ## Execution
 
 ```bash
 source venv/bin/activate
 python main.py "your-desired-url" --normalize --verbose
-```
-
-## Updating
-
-```bash
-sudo ./update.sh
 ```
 
 ## If you want to donate
